@@ -15,17 +15,17 @@
 #include "WProgram.h"
 #endif
 
-class IOText
+class IoText
 {
 	private:
-		long _timestamp = 0;
-		char* device_name = "";
+		long timestamp;
+		char* device_name;
 
 	public:
 
-		IOText();
+		IoText();
 
-		virtual ~IOText();
+		virtual ~IoText();
 
 		void build(long timestamp, char* device_name);
 };
