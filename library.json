@@ -1,0 +1,20 @@
+{
+    "name": "IoText",
+    "keywords": "IoText, data, protocol, IoT, IIoT",
+    "description": "An Arduino library for IoText data protocol encode and decode. This is more optimal text protocol then JSON and much more readeable (similar to CSV, but with types and time-series data).",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bieli/IoText-arduino.git"
+    },
+    "version": "0.1.0",
+    "exclude": "tests",
+    "examples": "examples/*/*.ino",
+    "frameworks": "arduino",
+    "platforms": [
+        "atmelavr",
+        "espressif8266",
+        "espressif32",
+        "atmelsam",
+        "ststm32"
+    ]
+}
