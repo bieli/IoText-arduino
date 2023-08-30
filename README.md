@@ -1,4 +1,4 @@
-![Platform IO CI](https://github.com/bieli/IoText-arduino/actions/workflows/platformio_ci.yml/badge.svg)
+![Platform IO CI](https://github.com/bieli/IoText-arduino/actions/workflows/platformio_ci.yaml/badge.svg)
 
 # IoText-arduino
 Arduino IoT library for IoText data protocol. You can build messages with any measuremens to use with MQTT or other data channels.
