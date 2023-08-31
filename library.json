@@ -6,6 +6,14 @@
         "type": "git",
         "url": "https://github.com/bieli/IoText-arduino.git"
     },
+    "authors":
+    [
+    {
+        "name": "Marcin Bielak",
+        "email": "marcin.bieli+github+IoText+arduino@gmail.com",
+        "maintainer": true
+    }
+    ],
     "version": "0.1.0",
     "exclude": "tests",
     "examples": "examples/*/*.ino",

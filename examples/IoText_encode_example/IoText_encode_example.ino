@@ -7,7 +7,7 @@ void setup() {
 
   String device_name = "DEVICE_NAME";
 
-  char* output = iot_ext.build(123123123, (char*) device_name.c_str());
+  char* output = iot_ext.build(millis(), (char*) device_name.c_str());
 
   Serial.print("IoText build string:");
   Serial.println(output);
