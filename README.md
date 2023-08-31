@@ -5,7 +5,7 @@ Arduino IoT library for IoText data protocol. You can build messages with any me
 
 ## Reference project and full IoText specification
 
-
+https://github.com/bieli/IoText-data-protocol/
 
 
 
