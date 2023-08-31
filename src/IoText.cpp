@@ -72,5 +72,7 @@ IoText::IoText() {
 IoText::~IoText() {
 }
 
-void IoText::build(long timestamp, char* device_name) {
+char* IoText::build(long timestamp, char* device_name) {
+    sprintf(buffer, "t|%ld,d|%s", timestamp, device_name);
+    return buffer;
 }

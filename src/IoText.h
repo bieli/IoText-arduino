@@ -20,6 +20,7 @@ class IoText
 	private:
 		long timestamp;
 		char* device_name;
+        char buffer[128];
 
 	public:
 
@@ -27,7 +28,7 @@ class IoText
 
 		virtual ~IoText();
 
-		void build(long timestamp, char* device_name);
+		char* build(long timestamp, char* device_name);
 };
 
 #endif /* IOTEXT_H */
