@@ -58,5 +58,11 @@ ci-basic:
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_decode_example --verbose
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_encode_example --verbose
 
+compile1:
+	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cpp
+
+compile2:
+	g++ -std=c++17 src/main2.cpp -o main2 && ./main2
+
 clean:
 	$(platformio) run -t clean

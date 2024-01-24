@@ -33,3 +33,6 @@
 CMakeFiles/
 CMakeCache.txt
 
+.vscode
+.idea
+
