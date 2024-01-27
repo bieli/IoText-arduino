@@ -7,7 +7,7 @@
 # Configuration
 # -------------
 
-$(eval venvpath     := .venv2)
+$(eval venvpath     := .venv)
 $(eval pip          := $(venvpath)/bin/pip)
 $(eval python       := $(venvpath)/bin/python)
 $(eval platformio   := $(venvpath)/bin/platformio)
@@ -16,6 +16,7 @@ $(eval platformio   := $(venvpath)/bin/platformio)
 setup-virtualenv:
 	@test -e $(python) || `command -v virtualenv` --python=python3 $(venvpath)
 
+# CFLAGS = -std=gnu++11 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs
 
 # ----------
 # PlatformIO
@@ -58,11 +59,28 @@ ci-basic:
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_decode_example --verbose
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_encode_example --verbose
 
+
+install-pio-deps:
+	$(platformio) pkg install -e bluepill
+	$(platformio) pkg install -e esp32dev
+
+compile-main-cpp11:
+	g++ -std=c++11 -Lsrc/ src/main.cc -o ./main && ./main
+
+compile-main-cpp17:
+	g++ -std=c++17 -Lsrc/ src/main.cc -o ./main && ./main
+
+compile-esp32-cpp11:
+	platformio ci --board=esp32dev --lib="." examples/IoText_encode_example
+
 compile1:
-	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cpp
+	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cc -o main
 
 compile2:
-	g++ -std=c++17 src/main2.cpp -o main2 && ./main2
+	g++ -std=c++17 src/main2.cc -o main2
 
 clean:
 	$(platformio) run -t clean
+
+# /tmp/arduino-cli lib install --git-url https://github.com/bieli/IoText-arduino#main
+# /tmp/arduino-cli compile -b esp32:esp32:esp32 /home/bieli/_prv/OpenSource/IoText-Arduino/MyFirstSketch

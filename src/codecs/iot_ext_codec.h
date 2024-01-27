@@ -8,10 +8,11 @@
 #include "../types/item.h"
 #include "item_codec.h"
 
+static const std::string ITEMS_DIVIDER = ",";
+
 
 class IoTextCodec {
 public:
-    inline static const std::string ITEMS_DIVIDER = ",";
 
     static std::vector<Item> decode(
         std::string payload, std::string items_divider = ITEMS_DIVIDER) {
