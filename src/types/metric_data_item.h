@@ -137,5 +137,4 @@ private:
     int decimal_precission_;
 };
 
-
 #endif // METRIC_DATA_ITEM_H

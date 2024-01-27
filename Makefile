@@ -59,6 +59,7 @@ ci-basic:
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_decode_example --verbose
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_encode_example --verbose
 
+
 install-pio-deps:
 	$(platformio) pkg install -e bluepill
 	$(platformio) pkg install -e esp32dev
