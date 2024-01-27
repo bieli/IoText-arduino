@@ -6,7 +6,7 @@
  * (c) 2023 Marcin Bielak
 **/
 #include <Arduino.h>
-#include <ArduinoSTL.h>
+// #include <ArduinoSTL.h>
 #include "IoText.h"
 
 #include <iostream>

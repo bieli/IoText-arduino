@@ -82,5 +82,26 @@ compile2:
 clean:
 	$(platformio) run -t clean
 
+#$ cat > arduino-cli.yaml
+#library:
+#  enable_unsafe_install: true
+#^Z
+#/tmp/arduino-cli --config-file arduino-cli.yaml lib install --git-url https://github.com/bieli/IoText-arduino#main
+#--git-url and --zip-path flags allow installing untrusted files, use it at your own risk.
+#Enumerating objects: 147, done.
+#Counting objects: 100% (147/147), done.
+#Compressing objects: 100% (105/105), done.
+#Total 147 (delta 65), reused 113 (delta 39), pack-reused 0
+#Library installed
+
+#/tmp/arduino-cli lib install ArduinoSTL
+
+#/tmp/arduino-cli lib list
+#Name                                 Zainstalowany  Dostępne Location              Description
+#ArduinoSTL                           1.3.3         -        LIBRARY_LOCATION_USER -
+#IoText data protocol Arduino Library 0.1.0          -        LIBRARY_LOCATION_USER -
+
+
 # /tmp/arduino-cli lib install --git-url https://github.com/bieli/IoText-arduino#main
-# /tmp/arduino-cli compile -b esp32:esp32:esp32 /home/bieli/_prv/OpenSource/IoText-Arduino/MyFirstSketch
+# /tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_encode_example/
+
