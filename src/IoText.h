@@ -29,7 +29,7 @@ class IoText
 		virtual ~IoText();
 
 		char* build(unsigned long timestamp, char* device_name);
-		void test();
+		String encode_test();
 };
 
 #endif /* IOTEXT_H */

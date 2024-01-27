@@ -46,14 +46,14 @@ int main() {
     Item item3 = Item(ItemTypes::METRIC_ITEM, "val", mdi);
     items.push_back(item3);
 
-    // MetricDataItem mdi2 = MetricDataItem(
-    //     MetricDataTypes::DECIMAL,
-    //     MetricValueTypeBuilder()
-    //         .set_decimal_value(1234567890.12345678901234567890)
-    //         .set_decimal_precission(3)
-    // );
-    // Item item4 = Item(ItemTypes::METRIC_ITEM, "metric_name", mdi2);
-    // items.push_back(item4);
+    MetricDataItem mdi2 = MetricDataItem(
+        MetricDataTypes::DECIMAL,
+        MetricValueTypeBuilder()
+            .set_decimal_value(1234567890.12345678901234567890)
+            .set_decimal_precission(3)
+    );
+    Item item4 = Item(ItemTypes::METRIC_ITEM, "metric_name", mdi2);
+    items.push_back(item4);
 
     MetricDataItem mdi3 = MetricDataItem(
         MetricDataTypes::BOOL,
