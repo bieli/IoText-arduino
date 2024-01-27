@@ -21,6 +21,28 @@ public:
         return item_type;
     }
 
+    static string from_item_types_convert_to_str(ItemTypes item_type) {
+        string output;
+        switch (item_type) {
+            case ItemTypes::TIMESTAMP_MILIS:
+                output = "t";
+                break;
+            case ItemTypes::DEVICE_ID:
+                output = "d";
+                break;
+            case ItemTypes::METRIC_ITEM:
+                output = "m";
+                break;
+            case ItemTypes::HEALTH_CHECK:
+                output = "h";
+                break;
+            default:
+                output = " ";
+                break;
+        }
+        return output;
+    }
+
     static string from_metric_item_types_to_str(MetricDataTypes mdi) {
         string output;
         if (mdi == MetricDataTypes::INTEGER) {

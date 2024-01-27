@@ -76,7 +76,7 @@ int main() {
     cout << endl << "Decoded items:" << endl;
 
     for (Item item : decoded_items) {
-        cout << endl << "type: " << "item.kind" << " " << "│" << " name: " << item.name << endl;
+        cout << endl << "type: " << ItemTypeTool::from_item_types_convert_to_str(item.kind) << " " << "│" << " name: " << item.name << endl;
         if (item.metric.has_value()) {
             MetricDataItem mdi = item.metric.value();
             cout << "        ╘═══ metric -> type: " << ItemTypeTool::from_metric_item_types_to_str(mdi.get_metric_data_type());
