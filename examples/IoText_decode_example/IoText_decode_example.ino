@@ -47,6 +47,8 @@ void setup() {
     concatenated_test_msg.str().c_str(),
     "Failed IoTexp protocol decoding process!"
   );
+
+  Serial.println("TEST FINISHED WITH SUCCESS!");
 }
 
 void loop() {

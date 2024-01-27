@@ -69,6 +69,8 @@ void setup()
         output.c_str(),
         "Failed IoTexp protocol encoding process with builder!"
     );
+
+    Serial.println("TEST FINISHED WITH SUCCESS!");
 }
 
 void loop()
