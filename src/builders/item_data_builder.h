@@ -20,7 +20,7 @@ public:
 
         items_.clear();
 
-        sprintf(buffer, "%d", timestamp_);
+        sprintf(buffer, "%lld", timestamp_);
         Item timestamp_item = Item(
             ItemTypes::TIMESTAMP_MILIS, 
             buffer

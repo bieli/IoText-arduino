@@ -11,6 +11,8 @@
 #include "src/codecs/item_codec.h"
 #include "src/codecs/iot_ext_codec.h"
 
+#include "src/builders/item_data_builder.h"
+
 using namespace std;
 // using namespace ItemTypeNS;
 
@@ -67,6 +69,8 @@ int main() {
     cout << "Encoded payload: " << endl << encoded_payload << endl;
     string payload = encoded_payload;
 
+    cout << "---------" << endl;
+
     vector<Item> decoded_items = IoTextCodec::decode(payload);
 
     cout << endl << "Decoded items:" << endl;
@@ -81,6 +85,55 @@ int main() {
     }
 
     cout << "---------" << endl;
+
+    IoTextItemDataBuilder builder = IoTextItemDataBuilder(3900237526042, "DEV_NAME_002");
+        // TODO: resolve issue with DECIMAL format and library on ESP32 with decimal library
+        // builder.add_measure(
+        //     "battery_level",
+        //     MetricDataItem(
+        //         MetricDataTypes::DECIMAL,
+        //         MetricValueTypeBuilder()
+        //             .set_decimal_value(12.34)
+        //     )
+        // )
+        builder.add_measure(
+            "open_door",
+            MetricDataItem(
+                MetricDataTypes::BOOL,
+                MetricValueTypeBuilder()
+                    .set_bool_value(true)
+            )
+        )
+        .add_measure(
+            "open_window",
+            MetricDataItem(
+                MetricDataTypes::BOOL,
+                MetricValueTypeBuilder()
+                    .set_bool_value(false)
+            )
+        )
+        .add_measure(
+            "counter_01",
+            MetricDataItem(
+                MetricDataTypes::INTEGER,
+                MetricValueTypeBuilder()
+                    .set_integer_value(1234)
+            )
+        )
+        .add_measure(
+            "txt_1",
+            MetricDataItem(
+                MetricDataTypes::TEXT,
+                MetricValueTypeBuilder()
+                    .set_text_value(string("txt"))
+            )
+        );
+
+    string built_msg = builder.build();
+
+    cout << "built_msg: " << built_msg << endl;
+
+
 
     return 0;
 }
