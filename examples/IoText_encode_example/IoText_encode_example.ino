@@ -2,13 +2,17 @@
 
 IoText iot_ext;
 
+using namespace std;
+
+
 void setup() {
   Serial.begin(57600);
 
-  String output = iot_ext.encode_test();
+  iot_ext.encode_test();
+  // string output = IoText::encode_test();
 
   Serial.print("IoText build string:");
-  Serial.println(output);
+  // Serial.println(output.c_str());
 }
 
 void loop() {

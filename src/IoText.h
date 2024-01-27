@@ -1,5 +1,5 @@
 /**
- * IoText data protocol library for Arduino
+ * IoText data protocol library for Arduino and PlatformIO embedded platforms
  * https://github.com/bieli/IoText-arduino
  *
  * Apache 2.0 License
@@ -15,6 +15,20 @@
 #include "WProgram.h"
 #endif
 
+using namespace std;
+
+#include <iostream>
+#include <variant>
+#include <optional>
+#include <vector>
+
+#include "types/metric_data_item.h"
+#include "types/item_type.h"
+#include "types/item.h"
+#include "codecs/item_codec.h"
+#include "codecs/iot_ext_codec.h"
+
+
 class IoText
 {
 	private:
@@ -29,7 +43,7 @@ class IoText
 		virtual ~IoText();
 
 		char* build(unsigned long timestamp, char* device_name);
-		String encode_test();
+		string encode_test();
 };
 
 #endif /* IOTEXT_H */

@@ -5,6 +5,7 @@
 
 #include "../types/metric_data_item.h"
 #include "../types/metric_data_types.h"
+#include "../types/item_type_tool.h"
 
 
 class MetricDataItemCodec {

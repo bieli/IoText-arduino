@@ -36,3 +36,10 @@ CMakeCache.txt
 .vscode
 .idea
 
+.pio/
+main
+main_cpp11
+main_cpp17
+tst01
+tst02
+tst03

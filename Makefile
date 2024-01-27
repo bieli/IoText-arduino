@@ -65,19 +65,22 @@ install-pio-deps:
 	$(platformio) pkg install -e esp32dev
 
 compile-main-cpp11:
-	g++ -std=c++11 -Lsrc/ src/main.cc -o ./main && ./main
+	g++ -std=c++11 -Lsrc/ main.cc -o ./main_cpp11 && ./main_cpp11
 
 compile-main-cpp17:
-	g++ -std=c++17 -Lsrc/ src/main.cc -o ./main && ./main
+	g++ -std=c++17 -Lsrc/ main.cc -o ./main_cpp17 && ./main_cpp17
 
 compile-esp32-cpp11:
 	platformio ci --board=esp32dev --lib="." examples/IoText_encode_example
 
+compile-arduino-cpp11:
+	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_encode_example/
+
 compile1:
-	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cc -o main
+	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs main.cc -o main1_main_cpp17
 
 compile2:
-	g++ -std=c++17 src/main2.cc -o main2
+	g++ -std=c++17 main2.cc -o main2_cpp17
 
 clean:
 	$(platformio) run -t clean

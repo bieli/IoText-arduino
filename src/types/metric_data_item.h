@@ -12,7 +12,10 @@
 #include <cstdio>
 #include <limits>
 #include <sstream> 
-#include <decimal/decimal>
+
+#ifdef ENABLE_DECIMAL_TYPE
+    #include <decimal/decimal>
+#endif
 
 #include "metric_data_types.h"
 
@@ -22,8 +25,9 @@ using namespace std;
 
 struct MetricValueTypeUnion {
     int i_value;
-    // decimal::decimal32 d_value;
+#ifdef ENABLE_DECIMAL_TYPE
     double d_value;
+#endif
     bool b_value;
     // const char *t_value;
     string s_value;
@@ -39,11 +43,12 @@ public:
         return *this;
     }
 
-    // MetricValueTypeBuilder& setd_value(decimal::decimal32 value) {
+#ifdef ENABLE_DECIMAL_TYPE
     MetricValueTypeBuilder& set_decimal_value(double value) {
         value_.d_value = value;
         return *this;
     }
+#endif
 
     MetricValueTypeBuilder& set_decimal_precission(int value) {
         decimal_precission_ = value;
@@ -119,10 +124,12 @@ public:
             sprintf(output, "%d", value_.i_value);
         } else if (data_type_ == MetricDataTypes::BOOL) {
             sprintf(output, "%s", value_.b_value == true ? "1" : "0");
+#ifdef ENABLE_DECIMAL_TYPE
         } else if (data_type_ == MetricDataTypes::DECIMAL) {
             stringstream ss;
             ss << fixed << setprecision(decimal_precission_) << value_.d_value;
             sprintf(output, "%s", ss.str().c_str());
+#endif
         } else if (data_type_ == MetricDataTypes::TEXT) {
             sprintf(output, "%s", (char *) value_.s_value.c_str());
         } else if (data_type_ == MetricDataTypes::NONE) {

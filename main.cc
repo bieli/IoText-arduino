@@ -3,17 +3,13 @@
 #include <optional>
 #include <vector>
 
-#include "types/metric_data_item.h"
-#include "types/item_type.h"
-#include "types/item.h"
-#include "codecs/item_codec.h"
-#include "codecs/iot_ext_codec.h"
+// #define ENABLE_DECIMAL_TYPE
 
-
-//#pragma GCC diagnostic push
-//#pragma GCC diagnostic ignored "-Wno-volatile"
-//<for loop>
-//#pragma GCC diagnostic pop
+#include "src/types/metric_data_item.h"
+#include "src/types/item_type.h"
+#include "src/types/item.h"
+#include "src/codecs/item_codec.h"
+#include "src/codecs/iot_ext_codec.h"
 
 using namespace std;
 
@@ -24,16 +20,9 @@ int main() {
         .display()
         .build();
 
-    MetricValueTypeBuilder mvtb = MetricValueTypeBuilder()
-        .set_decimal_value(123.123456);
-
-    MetricDataItem mdi999 = MetricDataItem(MetricDataTypes::INTEGER, mvtb);
-
-
     vector<Item> items;
     Item item1 = Item(ItemTypes::TIMESTAMP_MILIS, "2900267526042");
     items.push_back(item1);
-
 
     Item item2 = Item(ItemTypes::DEVICE_ID, "devie_id_x3");
     items.push_back(item2);
@@ -46,6 +35,7 @@ int main() {
     Item item3 = Item(ItemTypes::METRIC_ITEM, "val", mdi);
     items.push_back(item3);
 
+#ifdef ENABLE_DECIMAL_TYPE
     MetricDataItem mdi2 = MetricDataItem(
         MetricDataTypes::DECIMAL,
         MetricValueTypeBuilder()
@@ -54,6 +44,7 @@ int main() {
     );
     Item item4 = Item(ItemTypes::METRIC_ITEM, "metric_name", mdi2);
     items.push_back(item4);
+#endif
 
     MetricDataItem mdi3 = MetricDataItem(
         MetricDataTypes::BOOL,
