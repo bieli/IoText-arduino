@@ -25,6 +25,6 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Run PlatformIO
-        run: pio ci --board=megaatmega2560 --lib="." examples/IoText_decode_example
+        run: platformio ci --board=esp32dev --lib="." examples/IoText_encode_example
         env:
           PLATFORMIO_CI_SRC: ${{ matrix.example }}
