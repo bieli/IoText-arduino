@@ -17,6 +17,7 @@ enum class MetricDataTypes : char {
 };
 
 
+/* 
 MetricDataTypes from_str_convert_to_metric_data_types(std::string metric_data_type_str) {
     MetricDataTypes metric_data_type;
     if (metric_data_type_str == "i") {
@@ -49,6 +50,7 @@ std::string from_metric_item_types_to_str(MetricDataTypes mdi) {
     }
     return output;
 }
+ */
 
 
 #endif // METRIC_DATA_TYPES_H

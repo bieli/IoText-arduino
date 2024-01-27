@@ -61,7 +61,7 @@ public:
             value = tokens2[1];
         }
 
-        it.kind = from_str_convert_to_item_types(kind);
+        it.kind = ItemTypeTool::from_str_convert_to_item_types(kind);
         it.name = name;
         if (it.kind == ItemTypes::METRIC_ITEM && value != "") {
             it.metric = MetricDataItemCodec::decode(value);

@@ -80,7 +80,7 @@ compile1:
 	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs main.cc -o main1_main_cpp17
 
 compile2:
-	g++ -std=c++17 main2.cc -o main2_cpp17
+	g++ -std=c++17 main2.cpp -o main2_cpp17
 
 arduino-iotext-lib-reinstall:
 	/tmp/arduino-cli lib uninstall 'IoText data protocol Arduino Library'
