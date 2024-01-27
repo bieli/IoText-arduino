@@ -9,7 +9,7 @@ using namespace std;
 
 
 void setup() {
-  Serial.begin(57600);
+  Serial.begin(115200);
 
   string output = iot_ext.encode_test();
 

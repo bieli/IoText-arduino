@@ -12,6 +12,8 @@ string EXPECTED_MSG = "t|3900237526042,d|DEV_NAME_002,m|open_door=b:1,m|open_win
 
 void setup()
 {
+    Serial.begin(115200);
+
     IoTextItemDataBuilder builder = IoTextItemDataBuilder(3900237526042, "DEV_NAME_002");
         // TODO: resolve issue with DECIMAL format and library on ESP32 with decimal library
         // builder.add_measure(
@@ -58,8 +60,9 @@ void setup()
     string built_msg = builder.build();
 
     String output = built_msg.c_str();
-    printf("built_msg: %s\n", output);
-    printf("EXPECTED : %s\n", EXPECTED_MSG.c_str());
+
+    Serial.printf("built_msg: %s\n", output);
+    Serial.printf("EXPECTED : %s\n", EXPECTED_MSG.c_str());
 
     //static_assert(EXPECTED_MSG == output);
 }

@@ -6,7 +6,7 @@
 IoText iot_ext;
 
 void setup() {
-  Serial.begin(57600);
+  Serial.begin(115200);
 
   String device_name = "DEVICE_NAME";
 
