@@ -11,7 +11,8 @@
 #include <cstddef>
 #include <cstdio>
 #include <limits>
-#include <sstream> 
+#include <sstream>
+#include <cstring>
 
 #ifdef ENABLE_DECIMAL_TYPE
     #include <decimal/decimal>
@@ -71,8 +72,21 @@ public:
         return *this;
     }
 
-    MetricValueTypeBuilder& extract_value_from_str(string value) {
-        //TODO: extract_value_from_str
+    MetricValueTypeBuilder& extract_value_from_str(MetricDataTypes mdt, string value) {
+        if (mdt == MetricDataTypes::INTEGER) {
+            value_.i_value = stoi(value);
+        } else if (mdt == MetricDataTypes::BOOL) {
+            value_.b_value = strcmp(value.c_str(), "1") == 0 ? true : false;
+#ifdef ENABLE_DECIMAL_TYPE
+        // TODO: add conversion for decimal from string
+        // } else if (mdt == MetricDataTypes::DECIMAL) {
+            // stringstream ss;
+            // ss << fixed << setprecision(decimal_precission_) << value_.d_value;
+            // sprintf(output, "%s", ss.str().c_str());
+#endif
+        } else if (mdt == MetricDataTypes::TEXT) {
+            value_.s_value = value;
+        }
         return *this;
     }
 

@@ -43,7 +43,7 @@ public:
         return MetricDataItem(
             mdt,
             MetricValueTypeBuilder()
-                .extract_value_from_str(value)
+                .extract_value_from_str(mdt, value)
         );
     }
 

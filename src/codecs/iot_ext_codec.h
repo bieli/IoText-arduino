@@ -27,7 +27,7 @@ public:
         items_lst.push_back(payload);
 
         for (std::string item_str : items_lst) {
-            //std::cout << "+++++" << std::endl;
+            //std::cout << "+++++ [ DEBUG ] IoTextCodec::decode -> item_str:" << item_str << std::endl;
             Item item_obj = ItemCodec::decode(item_str);
             items.push_back(item_obj);
         }
