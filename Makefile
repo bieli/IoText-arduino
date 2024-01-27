@@ -7,7 +7,7 @@
 # Configuration
 # -------------
 
-$(eval venvpath     := .venv2)
+$(eval venvpath     := .venv)
 $(eval pip          := $(venvpath)/bin/pip)
 $(eval python       := $(venvpath)/bin/python)
 $(eval platformio   := $(venvpath)/bin/platformio)
@@ -59,10 +59,10 @@ ci-basic:
 	$(platformio) ci --board=$(board) --lib="." examples/IoText_encode_example --verbose
 
 compile1:
-	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cpp
+	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs src/main.cc -o main
 
 compile2:
-	g++ -std=c++17 src/main2.cpp -o main2 && ./main2
+	g++ -std=c++17 src/main2.cc -o main2
 
 clean:
 	$(platformio) run -t clean

@@ -37,13 +37,17 @@ public:
 
         MetricDataTypes mdt = from_str_convert_to_metric_item_types(data_type.c_str());
 
-        return MetricDataItem(mdt, value);
+        return MetricDataItem(
+            mdt,
+            MetricValueTypeBuilder()
+                .extract_value_from_str(value)
+        );
     }
 
     static std::string encode(const MetricDataItem& mdi, const std::string& data_type_and_value_char = ":") {
-        return from_metric_item_types_to_str(mdi.data_type) 
+        return from_metric_item_types_to_str(mdi.get_metric_data_type()) 
                 + data_type_and_value_char 
-                + convert_from_metric_value_type_to_str(mdi.value);
+                + mdi.get_value_as_str();
     }
 };
 
