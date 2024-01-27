@@ -20,9 +20,10 @@ public:
 
         items_.clear();
 
+        sprintf(buffer, "%d", timestamp_);
         Item timestamp_item = Item(
             ItemTypes::TIMESTAMP_MILIS, 
-            device_name_
+            buffer
         );
         items_.push_back(timestamp_item);
 
