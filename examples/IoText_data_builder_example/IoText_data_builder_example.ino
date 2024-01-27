@@ -57,12 +57,12 @@ void setup()
             )
         );
 
-    string built_msg = builder.build();
+    string output = builder.build();
 
-    String output = built_msg.c_str();
-
-    Serial.printf("built_msg: %s\n", output);
-    Serial.printf("EXPECTED : %s\n", EXPECTED_MSG.c_str());
+    Serial.print("CREATED MSG: ");
+    Serial.println(output.c_str());
+    Serial.print("EXPECTED   : ");
+    Serial.println(EXPECTED_MSG.c_str());
 
     //static_assert(EXPECTED_MSG == output);
 }

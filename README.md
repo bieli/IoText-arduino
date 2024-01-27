@@ -58,6 +58,56 @@ String output = built_msg.c_str();
 //t|3900237526042,d|DEV_NAME_002,m|open_door=b:1,m|open_window=b:0,m|counter_01=i:1234,m|txt_1=t:txt
 ```
 
+
+## Low-level Item API
+```cpp
+  vector<Item> items;
+  Item item1 = Item(ItemTypes::TIMESTAMP_MILIS, "2900267526042");
+  items.push_back(item1);
+
+
+  Item item2 = Item(ItemTypes::DEVICE_ID, "devie_id_x3");
+  items.push_back(item2);
+
+  MetricDataItem mdi = MetricDataItem(
+      MetricDataTypes::TEXT,
+      MetricValueTypeBuilder()
+          .set_text_value(string("txt"))
+  );
+  Item item3 = Item(ItemTypes::METRIC_ITEM, "val", mdi);
+  items.push_back(item3);
+
+#ifdef ENABLE_DECIMAL_TYPE
+  MetricDataItem mdi2 = MetricDataItem(
+      MetricDataTypes::DECIMAL,
+      MetricValueTypeBuilder()
+          .set_decimal_value(1234567890.12345678901234567890)
+          .set_decimal_precission(3)
+  );
+  Item item4 = Item(ItemTypes::METRIC_ITEM, "metric_name", mdi2);
+  items.push_back(item4);
+#endif
+
+  MetricDataItem mdi3 = MetricDataItem(
+      MetricDataTypes::BOOL,
+      MetricValueTypeBuilder()
+          .set_bool_value(true)
+  );
+  Item item5 = Item(ItemTypes::METRIC_ITEM, "metric_boolean1", mdi3);
+  items.push_back(item5);
+
+  MetricDataItem mdi4 = MetricDataItem(
+      MetricDataTypes::INTEGER, 
+      MetricValueTypeBuilder()
+          .set_integer_value(3333)
+  );
+  Item item6 = Item(ItemTypes::METRIC_ITEM, "metric_integer9", mdi4);
+  items.push_back(item6);
+
+  string output = IoTextCodec::encode(items);
+
+```
+
 ## Example output from ESP32 terminal
 ```bash
 ets Jun  8 2016 00:22:57
