@@ -12,6 +12,7 @@
 #include "src/codecs/iot_ext_codec.h"
 
 using namespace std;
+// using namespace ItemTypeNS;
 
 
 int main() {
@@ -70,13 +71,11 @@ int main() {
 
     cout << endl << "Decoded items:" << endl;
 
-    ItemTypeTool itt = ItemTypeTool();
-
     for (Item item : decoded_items) {
-        cout << endl << "type: " << item.kind << " " << "│" << " name: " << item.name << endl;
+        cout << endl << "type: " << "item.kind" << " " << "│" << " name: " << item.name << endl;
         if (item.metric.has_value()) {
             MetricDataItem mdi = item.metric.value();
-            cout << "        ╘═══ metric -> type: " << itt.from_metric_item_types_to_str(mdi.get_metric_data_type());
+            cout << "        ╘═══ metric -> type: " << ItemTypeTool::from_metric_item_types_to_str(mdi.get_metric_data_type());
             cout << ", value: " << mdi.get_value_as_str() << endl;
         }
     }

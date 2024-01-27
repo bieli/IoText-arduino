@@ -3,10 +3,11 @@
 
 #include "item_type.h"
 
+using namespace std;
 
 class ItemTypeTool {
 public:
-    static ItemTypes from_str_convert_to_item_types(std::string item_type_str) {
+    static ItemTypes from_str_convert_to_item_types(string item_type_str) {
         ItemTypes item_type;
         if (item_type_str == "t") {
             item_type = ItemTypes::TIMESTAMP_MILIS;
@@ -20,8 +21,8 @@ public:
         return item_type;
     }
 
-    static std::string from_metric_item_types_to_str(MetricDataTypes mdi) {
-        std::string output;
+    static string from_metric_item_types_to_str(MetricDataTypes mdi) {
+        string output;
         if (mdi == MetricDataTypes::INTEGER) {
             output = "i";
         } else if (mdi == MetricDataTypes::BOOL) {
@@ -36,7 +37,7 @@ public:
         return output;
     }
 
-    static MetricDataTypes from_str_convert_to_metric_data_types(std::string metric_data_type_str) {
+    static MetricDataTypes from_str_convert_to_metric_data_types(string metric_data_type_str) {
         MetricDataTypes metric_data_type;
         if (metric_data_type_str == "i") {
             metric_data_type = MetricDataTypes::INTEGER;
@@ -53,30 +54,5 @@ public:
     }
 };
 
-
-std::string operator+(const std::string& str, ItemTypes item_type) {
-    return str + static_cast<char>(item_type);
-}
-
-std::ostream& operator<<(std::ostream& os, ItemTypes item_type) {
-    switch (item_type) {
-        case ItemTypes::TIMESTAMP_MILIS:
-            os << "t";
-            break;
-        case ItemTypes::DEVICE_ID:
-            os << "d";
-            break;
-        case ItemTypes::METRIC_ITEM:
-            os << "m";
-            break;
-        case ItemTypes::HEALTH_CHECK:
-            os << "h";
-            break;
-        default:
-            os.setstate(std::ios_base::failbit);
-            break;
-    }
-    return os;
-}
 
 #endif // ITEM_TYPE_TOOL_H
