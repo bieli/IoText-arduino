@@ -13,7 +13,7 @@ using namespace std;
 
 class IoTextItemDataBuilder {
 public:
-    IoTextItemDataBuilder(int timestamp, string device_name) {
+    IoTextItemDataBuilder(long long int timestamp, string device_name) {
         timestamp_ = timestamp;
         device_name_ = device_name;
         char buffer[128];
@@ -22,7 +22,7 @@ public:
 
         Item timestamp_item = Item(
             ItemTypes::TIMESTAMP_MILIS, 
-            "a" //sprintf(buffer, "%d", timestamp_)
+            device_name_
         );
         items_.push_back(timestamp_item);
 

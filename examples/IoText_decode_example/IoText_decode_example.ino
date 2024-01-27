@@ -1,3 +1,6 @@
+// Demostrates how decode one record with the IoText data protocol library
+// Author: Marcin Bielak
+
 #include "IoText.h"
 
 IoText iot_ext;
@@ -7,10 +10,11 @@ void setup() {
 
   String device_name = "DEVICE_NAME";
 
-  char* output = iot_ext.build(millis(), (char*) device_name.c_str());
+  //TODO: add decode example
+  // char* output = iot_ext.build(millis(), (char*) device_name.c_str());
 
   Serial.print("IoText build string:");
-  Serial.println(output);
+  // Serial.println(output);
 }
 
 void loop() {

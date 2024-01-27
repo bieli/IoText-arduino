@@ -1,3 +1,6 @@
+// Demostrates how build one record with the IoText data protocol library
+// Author: Marcin Bielak
+
 #include "IoText.h"
 
 IoText iot_ext;
