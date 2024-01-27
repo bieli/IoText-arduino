@@ -27,6 +27,7 @@ using namespace std;
 #include "types/item.h"
 #include "codecs/item_codec.h"
 #include "codecs/iot_ext_codec.h"
+#include "builders/item_data_builder.h"
 
 
 class IoText

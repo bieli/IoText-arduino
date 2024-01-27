@@ -3,8 +3,7 @@ name: PlatformIO CI
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  IoText_encode_example:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -24,7 +23,32 @@ jobs:
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
 
-      - name: Run PlatformIO
+      - name: Run PlatformIO CI test encode
         run: platformio ci --board=esp32dev --lib="." examples/IoText_encode_example
+        env:
+          PLATFORMIO_CI_SRC: ${{ matrix.example }}
+  
+  IoText_builder_example:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+
+      - name: Run PlatformIO CI test builder
+        run: platformio ci --board=esp32dev --lib="." examples/IoText_data_builder_example
         env:
           PLATFORMIO_CI_SRC: ${{ matrix.example }}
