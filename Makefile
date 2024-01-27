@@ -82,6 +82,11 @@ compile1:
 compile2:
 	g++ -std=c++17 main2.cc -o main2_cpp17
 
+arduino-iotext-lib-reinstall:
+	/tmp/arduino-cli lib uninstall 'IoText data protocol Arduino Library'
+	/tmp/arduino-cli --config-file arduino-cli.yaml lib install --git-url https://github.com/bieli/IoText-arduino#main
+	/tmp/arduino-cli lib list
+
 clean:
 	$(platformio) run -t clean
 

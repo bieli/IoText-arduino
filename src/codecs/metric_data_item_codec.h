@@ -36,7 +36,7 @@ public:
         //std::cout << "[ DEBUG ] MetricDataItemCodec::decode - data_type: " << data_type << std::endl;
         //std::cout << "[ DEBUG ] MetricDataItemCodec::decode - value: " << value << std::endl;
 
-        MetricDataTypes mdt = from_str_convert_to_metric_item_types(data_type.c_str());
+        MetricDataTypes mdt = from_str_convert_to_metric_data_types(data_type.c_str());
 
         return MetricDataItem(
             mdt,
