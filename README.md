@@ -55,7 +55,7 @@ string built_msg = builder.build();
 String output = built_msg.c_str();
 
 //Expected output:
-//built_msg: t|3900237526042,d|DEV_NAME_002,m|open_door=b:1,m|open_window=b:0,m|counter_01=i:1234,m|txt_1=t:txt
+//t|3900237526042,d|DEV_NAME_002,m|open_door=b:1,m|open_window=b:0,m|counter_01=i:1234,m|txt_1=t:txt
 ```
 
 ## Example output from ESP32 terminal
@@ -145,13 +145,18 @@ Go to website: https://platformio.org/
 
 
 ## TODO
-[ ] - decoding from string message to data structures
-[ ] - unit tests
-[ ] - unit tests for embedded device (tests runs on hardware)
-[ ] - performance, allocated resources stats
-[ ] - add critical sections (i.e. mutexes) for FreeRTOS
-[ ] - add to official Arduino IDE (1.x and 2.x)
-[ ] - run performance and stability tests on different hardwares (for a few weeks on running devices with different speeds devices in MHz)
+- [x] rewrite C++17 implementation to C++11 standard (platforms limit!!!)
+- [x] encoding from string message to data structures
+- [x] encoding easy builder
+- [x] example Arduino scetches in Arduino library (teady to test library with one click)
+- [x] update CI in Github Actions
+- [ ] decoding from string message to data structures
+- [ ] unit tests
+- [ ] unit tests for embedded device (tests runs on hardware)
+- [ ] performance, allocated resources stats
+- [ ] add critical sections (i.e. mutexes) for FreeRTOS
+- [ ] add to official Arduino IDE (1.x and 2.x)
+- [ ] run performance and stability tests on different hardwares (for a few weeks on running devices with different speeds devices in MHz)
 
 
 See slot `CPPDEFINES`.
