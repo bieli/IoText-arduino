@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <optional>
 
 using namespace std;
 
@@ -15,6 +14,7 @@ enum class ItemTypes : char {
 };
 
 /*
+// TODO: find usage place for below operators
 namespace item_type_ns {
     std::string operator+(const std::string& str, ItemTypes item_type) {
         return str + static_cast<char>(item_type);
@@ -42,4 +42,5 @@ namespace item_type_ns {
     }
 }
 */
+
 #endif // ITEM_TYPE_H

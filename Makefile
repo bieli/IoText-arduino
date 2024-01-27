@@ -64,23 +64,32 @@ install-pio-deps:
 	$(platformio) pkg install -e bluepill
 	$(platformio) pkg install -e esp32dev
 
+compile-main-cpp03:
+	g++ -std=c++03 -Lsrc/ main.cc -o ./main_cpp03 && ./main_cpp03
+
 compile-main-cpp11:
 	g++ -std=c++11 -Lsrc/ main.cc -o ./main_cpp11 && ./main_cpp11
 
 compile-main-cpp17:
 	g++ -std=c++17 -Lsrc/ main.cc -o ./main_cpp17 && ./main_cpp17
 
-compile-esp32-cpp11-encode:
+compile-pio-esp32-cpp11-encode:
 	platformio ci --board=esp32dev --lib="." examples/IoText_encode_example
 
-compile-esp32-cpp11-builder:
-	platformio ci --board=esp32dev --lib="." examples//IoText_data_builder_example/
+compile-pio-esp32-cpp11-decode:
+	platformio ci --board=esp32dev --lib="." examples/IoText_decode_example
 
-compile-arduino-cpp11-encode:
-	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_encode_example/
+compile-pio-esp32-cpp11-builder:
+	platformio ci --board=esp32dev --lib="." examples//IoText_data_builder_example
 
-compile-arduino-cpp11-builder:
-	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_data_builder_example/
+compile-arduino-esp32-cpp11-encode:
+	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_encode_example
+
+compile-arduino-esp32-cpp11-decode:
+	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_decode_example
+
+compile-arduino-esp32-cpp11-builder:
+	/tmp/arduino-cli compile -b esp32:esp32:esp32 `pwd`/examples/IoText_data_builder_example
 
 compile1:
 	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs main.cc -Isrc/builders -o main1_main_cpp17
@@ -99,10 +108,12 @@ clean:
 compile:
 	make compile-main-cpp11
 	make compile-main-cpp17
-	make compile-esp32-cpp11-encode
-	make compile-arduino-cpp11-encode
-	make compile-esp32-cpp11-builder
-	make compile-arduino-cpp11-builder
+	make compile-pio-esp32-cpp11-encode
+	make compile-arduino-esp32-cpp11-encode
+	make compile-pio-esp32-cpp11-decode
+	make compile-arduino-esp32-cpp11-decode
+	make compile-pio-esp32-cpp11-builder
+	make compile-arduino-esp32-cpp11-builder
 
 #$ cat > arduino-cli.yaml
 #library:

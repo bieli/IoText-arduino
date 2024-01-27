@@ -64,7 +64,7 @@ void setup()
     Serial.print("EXPECTED   : ");
     Serial.println(EXPECTED_MSG.c_str());
 
-    //static_assert(EXPECTED_MSG == output);
+    assert(strcmp(EXPECTED_MSG.c_str(), output.c_str()) == 0);
 }
 
 void loop()
