@@ -64,7 +64,11 @@ void setup()
     Serial.print("EXPECTED   : ");
     Serial.println(EXPECTED_MSG.c_str());
 
-    assert(strcmp(EXPECTED_MSG.c_str(), output.c_str()) == 0);
+    assertv(
+        EXPECTED_MSG.c_str(),
+        output.c_str(),
+        "Failed IoTexp protocol encoding process with builder!"
+    );
 }
 
 void loop()

@@ -4,27 +4,25 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Item {
 public:
-    Item(const string& name, double price) : name_(name), price_(price) {}
+    Item(const std::string& name, double price) : name_(name), price_(price) {}
 
-    const string& getName() const {
+    const std::string& getName() const {
         return name_;
     }
 
-    friend ostream& operator<<(ostream& os, const Item& item) {
+    friend std::ostream& operator<<(std::ostream& os, const Item& item) {
         os << "Item: " << item.name_ << ", Price: " << item.price_;
         return os;
     }
 
     void display() const {
-        cout << "Item: " << name_ << ", Price: " << price_ << endl;
+        std::cout << "Item: " << name_ << ", Price: " << price_ << std::endl;
     }
 
 private:
-    string name_;
+    std::string name_;
     double price_;
 };
 
@@ -34,11 +32,11 @@ public:
     Builder() : item_("DefaultItem", 0.0) {}
 
     // Default constructor with default values for Item
-    // Builder(const string& defaultName = "DefaultItem", double defaultPrice = 0.0)
+    // Builder(const std::string& defaultName = "DefaultItem", double defaultPrice = 0.0)
     //    : item_(defaultName, defaultPrice) {}
 
 
-    Builder& setItem(const string& name) {
+    Builder& setItem(const std::string& name) {
         item_ = Item(name, 0.0);  // Default price is 0.0
         return *this;
     }
@@ -66,7 +64,7 @@ int main() {
     // item.display();
     
     // Use the overloaded << operator to display the item
-    cout << item << endl;
+    std::cout << item << std::endl;
 
     return 0;
 }

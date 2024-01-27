@@ -94,9 +94,6 @@ compile-arduino-esp32-cpp11-builder:
 compile1:
 	g++ -std=gnu++17 -fno-exceptions -fpermissive -fexceptions -Isrc/types -Isrc/codecs main.cc -Isrc/builders -o main1_main_cpp17
 
-compile2:
-	g++ -std=c++17 main2.cpp -o main2_cpp17
-
 arduino-iotext-lib-reinstall:
 	/tmp/arduino-cli lib uninstall 'IoText data protocol Arduino Library'
 	/tmp/arduino-cli --config-file arduino-cli.yaml lib install --git-url https://github.com/bieli/IoText-arduino#main

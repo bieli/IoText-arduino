@@ -30,6 +30,21 @@ using namespace std;
 #include "builders/item_data_builder.h"
 
 
+#ifndef assertm
+#define assertm(x, msg) \
+    if(!(x)) { fprintf(stderr, "Assertion error: %s\n", msg); abort(); }
+#endif
+
+#ifdef assertv
+#undef assertv
+#endif
+
+#ifndef assertv
+#define assertv(expected, result, msg) \
+    if(!(strcmp(expected, result) == 0)) { fprintf(stderr, "Assertion error: %s\nEXPECTED: '%s'\nRESULT  : '%s'\n\n\n", expected, result, msg); abort(); }
+#endif
+
+
 class IoText
 {
 	private:
