@@ -9,8 +9,6 @@
 
 #include "IoText.h"
 
-#undef ENABLE_DECIMAL_TYPE
-
 IoText iot_ext;
 
 string EXPECTED_MSG = "t|2900267526042,d|devie_id_x3,m|val=t:txt,m|metric_boolean1=b:1,m|metric_integer9=i:3333";

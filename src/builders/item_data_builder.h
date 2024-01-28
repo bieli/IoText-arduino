@@ -13,14 +13,14 @@ using namespace std;
 
 class IoTextItemDataBuilder {
 public:
-    IoTextItemDataBuilder(long long int timestamp, string device_name) {
+    IoTextItemDataBuilder(int64_t timestamp, string device_name) {
         timestamp_ = timestamp;
         device_name_ = device_name;
         char buffer[128];
 
         items_.clear();
 
-        sprintf(buffer, "%lld", timestamp_);
+        sprintf(buffer, "%ld", timestamp_);
         Item timestamp_item = Item(
             ItemTypes::TIMESTAMP_MILIS, 
             buffer
@@ -44,7 +44,7 @@ public:
         return IoTextCodec::encode(items_);
     }
 private:
-    long long int timestamp_;
+    int64_t timestamp_;
     vector<Item> items_;
     string device_name_;
     vector<MetricDataItem> metrics_;

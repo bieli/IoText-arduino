@@ -75,15 +75,13 @@ public:
         return metric_data_type;
     }
 
-    static std::string remove_trailing_zeros_from_str_decimal(const std::string &decimal_value) {
-        if (decimal_value.find('.') != std::string::npos) {
-            std::string result = decimal_value;
-            while (!result.empty() && result.back() == '0')
-            {
+    static string remove_trailing_zeros_from_str_decimal(const string &decimal_value) {
+        if (decimal_value.find('.') != string::npos) {
+            string result = decimal_value;
+            while (!result.empty() && result.back() == '0') {
                 result.pop_back();
             }
-            if (!result.empty() && result.back() == '.')
-            {
+            if (!result.empty() && result.back() == '.') {
                 result.pop_back();
             }
             return result;

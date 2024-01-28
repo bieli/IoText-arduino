@@ -35,8 +35,8 @@ public:
         string data_type = tokens[0];
         string value = tokens[1];
 
-        cout << "[ DEBUG ] MetricDataItemCodec::decode - data_type: " << data_type << endl;
-        cout << "[ DEBUG ] MetricDataItemCodec::decode - value: " << value << endl;
+        // cout << "[ DEBUG ] MetricDataItemCodec::decode - data_type: " << data_type << endl;
+        // cout << "[ DEBUG ] MetricDataItemCodec::decode - value: " << value << endl;
 
         MetricDataTypes mdt = ItemTypeTool::from_str_convert_to_metric_data_types(data_type.c_str());
         return MetricDataItem(

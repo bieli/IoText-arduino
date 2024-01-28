@@ -42,8 +42,9 @@ int main() {
     MetricDataItem mdi2 = MetricDataItem(
         MetricDataTypes::DECIMAL,
         MetricValueTypeBuilder()
-            .set_decimal_value(1234567890.12345678901234567890)
             .set_decimal_precission(3)
+            // .set_decimal_value(12345.67890)
+            .set_decimal_value_from_parts(12345, 67890)
     );
     Item item4 = Item(ItemTypes::METRIC_ITEM, "metric_name", mdi2);
     items.push_back(item4);
@@ -93,8 +94,9 @@ int main() {
             MetricDataItem(
                 MetricDataTypes::DECIMAL,
                 MetricValueTypeBuilder()
-                    .set_decimal_value(1234567.7654321)
-                    .set_decimal_precission(7)
+                    .set_decimal_precission(9)
+                    .set_decimal_value(1234.123456789)
+                    // .set_decimal_value_as_str("1234.123456789")
             )
         );
 #endif
