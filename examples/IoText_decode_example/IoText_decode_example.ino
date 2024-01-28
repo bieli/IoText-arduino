@@ -40,15 +40,18 @@ void setup() {
           cout << "        ╘═══ metric -> type: " << ItemTypeTool::from_metric_item_types_to_str(mdi.get_metric_data_type());
           cout << ", value: " << mdi.get_value_as_str() << endl;
           concatenated_test_msg << "=" << ItemTypeTool::from_metric_item_types_to_str(mdi.get_metric_data_type());
-          concatenated_test_msg << ":" << mdi.get_value_as_str();
+          concatenated_test_msg << ":" << mdi.get_value_as_str() << ",";
       } else {
           concatenated_test_msg << ",";
       }
   }
 
+  string output = concatenated_test_msg.str();
+  output.pop_back();
+
   assertv(
     EXPECTED_MSG.c_str(),
-    concatenated_test_msg.str().c_str(),
+    output.c_str(),
     "Failed IoTexp protocol decoding process!"
   );
 

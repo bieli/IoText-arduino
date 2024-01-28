@@ -41,7 +41,7 @@ using namespace std;
 
 #ifndef assertv
 #define assertv(expected, result, msg) \
-    if(!(strcmp(expected, result) == 0)) { fprintf(stderr, "Assertion error: %s\nEXPECTED: '%s'\nRESULT  : '%s'\n\n\n", expected, result, msg); abort(); }
+    if(!(strcmp(expected, result) == 0)) { fprintf(stderr, "Assertion error: %s\nEXPECTED: '%s'\nRESULT  : '%s'\n\n\n", msg, expected, result); abort(); }
 #endif
 
 

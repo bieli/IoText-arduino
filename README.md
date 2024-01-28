@@ -108,7 +108,7 @@ String output = built_msg.c_str();
 
 ```
 
-## Example output from ESP32 terminal
+## Example output from ESP32 terminal - file: examples/IoText_decode_example/IoText_decode_example.ino
 ```bash
 ets Jun  8 2016 00:22:57
 
@@ -123,8 +123,26 @@ load:0x3fff0030,len:1344
 load:0x40078000,len:13964
 load:0x40080400,len:3600
 entry 0x400805f0
-E (151) psram: PSRAM ID read error: 0xffffffff
-IoText build string:t|2900267526042,d|devie_id_x3,m|val=t:txt,m|metric_boolean1=b:1,m|metric_integer9=i:3333
+E (148) psram: PSRAM ID read error: 0xffffffff
+Encoded payload:
+t|2900267526042,d|devie_id_x3,m|val=t:txt,m|metric_boolean1=b:1,m|metric_integer9=i:3333
+---------
+
+Decoded items:
+
+type: t │ name: 2900267526042
+
+type: d │ name: devie_id_x3
+
+type: m │ name: val
+        ╘═══ metric -> type: t, value: txt
+
+type: m │ name: metric_boolean1
+        ╘═══ metric -> type: b, value: 1
+
+type: m │ name: metric_integer9
+        ╘═══ metric -> type: i, value: 3333
+TEST FINISHED WITH SUCCESS!
 ```
 
 ## How to develop this library for a few platforms (Linux, Aruino, Esspresif)
