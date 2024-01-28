@@ -46,11 +46,12 @@ void setup() {
       }
   }
 
-  concatenated_test_msg.pop_back();
+  string output = concatenated_test_msg.str();
+  output.pop_back();
 
   assertv(
     EXPECTED_MSG.c_str(),
-    concatenated_test_msg.str().c_str(),
+    output.c_str(),
     "Failed IoTexp protocol decoding process!"
   );
 
