@@ -19,6 +19,7 @@
 #endif
 
 #include "metric_data_types.h"
+#include "helpers.h"
 
 using namespace std;
 // using namespace item_type_ns;
@@ -73,17 +74,23 @@ public:
     }
 
     MetricValueTypeBuilder& extract_value_from_str(MetricDataTypes mdt, string value) {
+        cout << "[ DEBUG ] extract_value_from_str -> mdt: " << ItemTypeTool::from_metric_item_types_to_str(mdt) << ", value: " << value << endl;
         if (mdt == MetricDataTypes::INTEGER) {
             value_.i_value = stoi(value);
         } else if (mdt == MetricDataTypes::BOOL) {
             value_.b_value = strcmp(value.c_str(), "1") == 0 ? true : false;
 #ifdef ENABLE_DECIMAL_TYPE
         } else if (mdt == MetricDataTypes::DECIMAL) {
-            std::stringstream ss;
-            ss << std::fixed << value_.d_value;
+            stringstream ss;
+            ss << fixed << setprecision(decimal_precission_) << atof(value.c_str());
             ss >> value_.d_value;
             ss << static_cast<double>(value_.d_value);
-            //cout << "extract_value_from_str -> input: " << static_cast<double>(value_.d_value) << ", converted:" << ss.str() << endl;
+
+            // double dbl = atof(value.c_str());
+            // stringstream ss1;
+            // ss1 << fixed << setprecision(decimal_precission_) << dbl;
+            // TODO: set private field: decimal_precission_ in this code block
+            // cout << "[ DEBUG ] extract_value_from_str -> input: " << value << ", converted:" << ss1.str().c_str() << endl;
 #endif
         } else if (mdt == MetricDataTypes::TEXT) {
             value_.s_value = value;
@@ -144,7 +151,7 @@ public:
         } else if (data_type_ == MetricDataTypes::DECIMAL) {
             stringstream ss;
             ss << fixed << setprecision(decimal_precission_) << value_.d_value;
-            sprintf(output, "%s", ss.str().c_str());
+            sprintf(output, "%s", ItemTypeTool::remove_trailing_zeros_from_str_decimal(ss.str()).c_str());
 #endif
         } else if (data_type_ == MetricDataTypes::TEXT) {
             sprintf(output, "%s", (char *) value_.s_value.c_str());

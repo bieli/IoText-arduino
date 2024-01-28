@@ -87,6 +87,7 @@ int main() {
     cout << "---------" << endl;
 
     IoTextItemDataBuilder builder = IoTextItemDataBuilder(3900237526042, "DEV_NAME_002");
+#ifdef ENABLE_DECIMAL_TYPE
         builder.add_measure(
             "battery_level",
             MetricDataItem(
@@ -95,8 +96,9 @@ int main() {
                     .set_decimal_value(1234567.7654321)
                     .set_decimal_precission(7)
             )
-        )
-        .add_measure(
+        );
+#endif
+        builder.add_measure(
             "open_door",
             MetricDataItem(
                 MetricDataTypes::BOOL,
