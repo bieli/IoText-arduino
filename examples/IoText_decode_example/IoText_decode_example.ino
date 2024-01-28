@@ -46,6 +46,8 @@ void setup() {
       }
   }
 
+  concatenated_test_msg.pop_back();
+
   assertv(
     EXPECTED_MSG.c_str(),
     concatenated_test_msg.str().c_str(),
