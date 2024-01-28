@@ -5,7 +5,11 @@
 #include <string>
 #include <cassert>
 
+//#define ENABLE_DECIMAL_TYPE
+
 #include "IoText.h"
+
+#undef ENABLE_DECIMAL_TYPE
 
 IoText iot_ext;
 

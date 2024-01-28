@@ -1,7 +1,7 @@
 // Demostrates how build one record with the IoText data protocol library
 // Author: Marcin Bielak
 
-//#include <type_traits>
+//#define ENABLE_DECIMAL_TYPE
 
 #include "IoText.h"
 #include "builders/item_data_builder.h"
@@ -15,15 +15,17 @@ void setup()
     Serial.begin(115200);
 
     IoTextItemDataBuilder builder = IoTextItemDataBuilder(3900237526042, "DEV_NAME_002");
-        // TODO: resolve issue with DECIMAL format and library on ESP32 with decimal library
-        // builder.add_measure(
-        //     "battery_level",
-        //     MetricDataItem(
-        //         MetricDataTypes::DECIMAL,
-        //         MetricValueTypeBuilder()
-        //             .set_decimal_value(12.34)
-        //     )
-        // )
+#ifdef ENABLE_DECIMAL_TYPE
+        builder.add_measure(
+            "battery_level",
+            MetricDataItem(
+                MetricDataTypes::DECIMAL,
+                MetricValueTypeBuilder()
+                    .set_decimal_value(1234567.7654321)
+                    .set_decimal_precission(7)
+            )
+        );
+#endif
         builder.add_measure(
             "open_door",
             MetricDataItem(

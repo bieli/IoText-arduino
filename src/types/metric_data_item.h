@@ -78,11 +78,12 @@ public:
         } else if (mdt == MetricDataTypes::BOOL) {
             value_.b_value = strcmp(value.c_str(), "1") == 0 ? true : false;
 #ifdef ENABLE_DECIMAL_TYPE
-        // TODO: add conversion for decimal from string
-        // } else if (mdt == MetricDataTypes::DECIMAL) {
-            // stringstream ss;
-            // ss << fixed << setprecision(decimal_precission_) << value_.d_value;
-            // sprintf(output, "%s", ss.str().c_str());
+        } else if (mdt == MetricDataTypes::DECIMAL) {
+            std::stringstream ss;
+            ss << std::fixed << value_.d_value;
+            ss >> value_.d_value;
+            ss << static_cast<double>(value_.d_value);
+            //cout << "extract_value_from_str -> input: " << static_cast<double>(value_.d_value) << ", converted:" << ss.str() << endl;
 #endif
         } else if (mdt == MetricDataTypes::TEXT) {
             value_.s_value = value;
